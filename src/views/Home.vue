@@ -1,18 +1,27 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+      <div v-for="video in videos" :key="video.ID">
+        <router-link :to="{name: 'video-watch', params: {id: video.ID}}">
+          <h3>{{ video.Name }}</h3>
+        </router-link>
+      </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Api from '@/service/api'
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  mounted () {
+    Api().get('/videos').then((response) => {
+      this.videos = response.data
+    })
+  },
+  data () {
+    return {
+      videos: []
+    }
   }
 }
 </script>
