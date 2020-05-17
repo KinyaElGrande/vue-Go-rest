@@ -9,19 +9,11 @@
 </template>
 
 <script>
-import Api from '@/service/api'
 
 export default {
   name: 'Home',
-  mounted () {
-    Api().get('/videos').then((response) => {
-      this.videos = response.data
-    })
-  },
-  data () {
-    return {
-      videos: []
-    }
+  computed: {
+    videos () { return this.$store.state.videos }
   }
 }
 </script>

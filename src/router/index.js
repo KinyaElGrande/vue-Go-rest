@@ -14,7 +14,8 @@ const routes = [
   {
     path: '/video/:id',
     name: 'video-watch',
-    component: VideoWatch
+    component: VideoWatch,
+    params: true
   },
   {
     path: '/about',

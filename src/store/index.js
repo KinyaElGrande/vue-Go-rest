@@ -1,52 +1,23 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Api from '@/service/api'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    videos: [
-      {
-        id: '101',
-        name: 'video 101',
-        description:
-          '<p>lorem ipsum na kamtu flani pale ivo, unacheeeki eeh</p>'
-      },
-      {
-        id: '102',
-        name: 'video 102',
-        description:
-          '<p>lorem ipsum na kamtu flani pale ivo, unacheeeki eeh</p>'
-      },
-      {
-        id: '103',
-        name: 'video 103',
-        description:
-          '<p>lorem ipsum na kamtu flani pale ivo, unacheeeki eeh</p>'
-      },
-      {
-        id: '104',
-        name: 'video 104',
-        description:
-          '<p>lorem ipsum na kamtu flani pale ivo, unacheeeki eeh</p>'
-      },
-      {
-        id: '105',
-        name: 'video 105',
-        description:
-          '<p>lorem ipsum na kamtu flani pale ivo, unacheeeki eeh</p>'
-      },
-      {
-        id: '106',
-        name: 'video 106',
-        description:
-          '<p>lorem ipsum na kamtu flani pale ivo, unacheeeki eeh</p>'
-      }
-    ]
+    videos: []
   },
   mutations: {
+    SET_VIDEOS (state, videos) {
+      state.videos = videos
+    }
   },
   actions: {
+    async loadVideos ({ commit }) {
+      const response = await Api().get('/videos')
+      commit('SET_VIDEOS', response.data)
+    }
   },
   modules: {
   }
