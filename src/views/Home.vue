@@ -4,16 +4,20 @@
         <router-link :to="{name: 'video-watch', params: {id: video.ID}}">
           <h3>{{ video.Name }}</h3>
         </router-link>
+        <div v-for="Tag in video.Tags" :key="Tag.ID">
+          {{ Tag.Name}}
+        </div>
       </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
   computed: {
-    videos () { return this.$store.state.videos }
+    ...mapState(['videos'])
   }
 }
 </script>

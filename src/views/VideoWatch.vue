@@ -15,7 +15,10 @@ export default {
   },
   computed: {
     video () {
-      return this.$store.state.videos.find(vid => vid.id === this.$route.params.ID)
+      return this.$store.state.videos.find(vid => vid.ID === this.$route.params.id)
+    },
+    tags () {
+      return this.video.Tags.find(tag => tag.id === this.ID)
     }
   }
 }

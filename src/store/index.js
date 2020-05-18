@@ -20,5 +20,10 @@ export default new Vuex.Store({
     }
   },
   modules: {
+  },
+  getters: {
+    getTag: state => ID => {
+      return state.videos.video.Tags.find(Tag => Tag.ID === ID)
+    }
   }
 })
