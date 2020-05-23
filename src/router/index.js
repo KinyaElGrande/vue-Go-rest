@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import VideoWatch from '../views/VideoWatch.vue'
+import TagList from '../views/TagList.vue'
 
 Vue.use(VueRouter)
 
@@ -20,7 +21,13 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import('../views/About.vue')
+  },
+  {
+    path: '/tag/:id',
+    name: 'tag',
+    component: TagList,
+    params: true
   }
 ]
 

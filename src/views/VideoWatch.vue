@@ -10,15 +10,9 @@
 
 <script>
 export default {
-  mounted () {
-    this.$store.dispatch('loadVideos')
-  },
   computed: {
     video () {
       return this.$store.state.videos.find(vid => vid.ID === this.$route.params.id)
-    },
-    tags () {
-      return this.video.Tags.find(tag => tag.id === this.ID)
     }
   }
 }
